@@ -9,7 +9,7 @@ class Entity {
    * (в зависимости от того, что наследуется от Entity)
    * */
   static list(data, callback){
-
+  
   }
 
   /**
