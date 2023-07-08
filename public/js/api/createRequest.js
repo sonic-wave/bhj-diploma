@@ -3,24 +3,30 @@
  * на сервер.
  * */
 
-
 const createRequest = (options = {}) => {
     const xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
     let method = '';
     let url = options.url;
+    let data = Object.entries(options.data);
+    const formData = new FormData();
 
     if (options.method === 'GET') {
-        const urlForm = `${options.url}?mail=${options.data.mail}&password=${options.data.password}`;
+        let values = '';
+        for ([key, value] of data) {
+            values += key + '=' + value + '&';
+        }
+        values = values.substring(0, values.length - 1);
+        const urlForm = `${options.url}?${values}`;
         method = 'GET';
         url = urlForm;
     }
 
     if (options.method !== 'GET') {
-        const formData = new FormData();
         method = options.method;
-        formData.append('mail', options.data.mail);
-        formData.append('password', options.data.password);
+        for ([key, value] of data) {
+            formData.append(key, value);
+        }
     }
 
     try {
@@ -29,7 +35,11 @@ const createRequest = (options = {}) => {
         
         xhr.onreadystatechange = function() {
             if (xhr.readyState === xhr.DONE && xhr.status === 200) {
-                options.callback = (xhr.response.error, xhr.response);
+                if (xhr.response.error == null) {
+                    options.callback = (undefined, xhr.response);
+                } else {
+                    options.callback = (xhr.response.error, xhr.response);
+                }
             }
         }
     }
@@ -38,3 +48,24 @@ const createRequest = (options = {}) => {
     }
 
 }
+
+createRequest(options = {
+    url: 'http://localhost:8000', // адрес
+    data: { // произвольные данные, могут отсутствовать
+      email: 'ivan@poselok.ru',
+      password: 'odinodin'
+    },
+    method: 'GET', // метод запроса
+    /*
+      Функция, которая сработает после запроса.
+      Если в процессе запроса произойдёт ошибка, её объект
+      должен быть в параметре err.
+      Если в запросе есть данные, они должны быть переданы в response.
+    */
+    callback: (err, response) => {
+        if (err !== null) {
+            console.log( 'Ошибка, если есть', err );
+        }
+        console.log( 'Данные, если нет ошибки', response );
+    }
+  });
