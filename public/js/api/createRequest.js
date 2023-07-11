@@ -35,11 +35,11 @@ const createRequest = (options = {}) => {
         
         xhr.onreadystatechange = function() {
             if (xhr.readyState === xhr.DONE && xhr.status === 200) {
-                if (xhr.response.error == null) {
-                    options.callback = (undefined, xhr.response);
-                } else {
+                // if (xhr.response.error == null) {
+                //     options.callback = (undefined, xhr.response);
+                // } else {
                     options.callback = (xhr.response.error, xhr.response);
-                }
+                // }
             }
         }
     }
@@ -50,7 +50,7 @@ const createRequest = (options = {}) => {
 }
 
 createRequest(options = {
-    url: 'http://localhost:8000', // адрес
+    url: 'https://example.com', // адрес
     data: { // произвольные данные, могут отсутствовать
       email: 'ivan@poselok.ru',
       password: 'odinodin'
@@ -63,9 +63,9 @@ createRequest(options = {
       Если в запросе есть данные, они должны быть переданы в response.
     */
     callback: (err, response) => {
-        if (err !== null) {
+        
             console.log( 'Ошибка, если есть', err );
-        }
+        
         console.log( 'Данные, если нет ошибки', response );
     }
   });
