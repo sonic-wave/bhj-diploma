@@ -13,15 +13,24 @@ class AsyncForm {
    * через registerEvents()
    * */
   constructor(element) {
-
+    try {
+      this.element = element;
+      this.element.registerEvents;
+    }
+    catch (e) {
+      console.log(e);
+    }
   }
 
   /**
    * Необходимо запретить отправку формы и в момент отправки
    * вызывает метод submit()
    * */
-  registerEvents() {
-
+  registerEvents(e) {
+    if (response.success === true) {
+      e.preventDefault(); 
+      this.element.submit;
+    }
   }
 
   /**
@@ -32,7 +41,7 @@ class AsyncForm {
    * }
    * */
   getData() {
-
+    this.element.append(element.name, element.value);
   }
 
   onSubmit(options){

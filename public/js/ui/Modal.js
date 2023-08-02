@@ -12,7 +12,13 @@ class Modal {
    * необходимо выкинуть ошибку.
    * */
   constructor(element){
-
+      try {
+        this.element = element;
+        this.element.registerEvents;
+      }
+      catch (e) {
+        console.log(e);
+    }
   }
 
   /**
@@ -21,7 +27,9 @@ class Modal {
    * (с помощью метода Modal.onClose)
    * */
   registerEvents() {
-
+    if (this.element.hasAttribute('data-dismiss') === 'modal') {
+      this.element.onClose;
+    }
   }
 
   /**
@@ -29,19 +37,20 @@ class Modal {
    * Закрывает текущее окно (Modal.close())
    * */
   onClose(e) {
-
+    e.preventDefault();
+    this.element.close;
   }
   /**
    * Открывает окно: устанавливает CSS-свойство display
    * со значением «block»
    * */
   open() {
-
+    this.element.style.setProperty('display', 'block');
   }
   /**
    * Закрывает окно: удаляет CSS-свойство display
    * */
   close(){
-
+    this.element.style.removeProperty('display');
   }
 }

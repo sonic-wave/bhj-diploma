@@ -8,21 +8,30 @@ const createRequest = (options = {}) => {
     xhr.responseType = 'json';
     let method = '';
     let url = options.url;
-    let data = Object.entries(options.data);
     const formData = new FormData();
+    let data = '';
 
     if (options.method === 'GET') {
         let values = '';
-        for ([key, value] of data) {
-            values += key + '=' + value + '&';
+        if (options.data !== undefined) {
+            data = Object.entries(options.data);
+            for ([key, value] of data) {
+                values += key + '=' + value + '&';
+            }
+            values = values.substring(0, values.length - 1);
+            const urlForm = `${options.url}?${values}`;
+            method = 'GET';
+            url = urlForm;
+        } else {
+            method = 'GET';
+            url = options.url;
         }
-        values = values.substring(0, values.length - 1);
-        const urlForm = `${options.url}?${values}`;
-        method = 'GET';
-        url = urlForm;
+        // method = 'GET';
+        // url = urlForm;
     }
 
     if (options.method !== 'GET') {
+        data = Object.entries(options.data);
         method = options.method;
         for ([key, value] of data) {
             formData.append(key, value);
@@ -50,12 +59,12 @@ const createRequest = (options = {}) => {
 }
 
 // createRequest(options = {
-//     url: 'https://example.com', // адрес
+//     url: 'http://localhost:8000/user/login', // адрес
 //     data: { // произвольные данные, могут отсутствовать
-//       email: 'ivan@poselok.ru',
-//       password: 'odinodin'
+//       email: 'demo@demo',
+//       password: 'demo'
 //     },
-//     method: 'GET', // метод запроса
+//     method: 'POST', // метод запроса
 //     /*
 //       Функция, которая сработает после запроса.
 //       Если в процессе запроса произойдёт ошибка, её объект
