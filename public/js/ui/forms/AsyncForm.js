@@ -30,9 +30,9 @@ class AsyncForm {
    * Необходимо запретить отправку формы и в момент отправки
    * вызывает метод submit()
    * */
-  registerEvents(e) {
-      e.preventDefault(); 
-      this.element.addEventListener('submit', () => {
+  registerEvents() {
+      this.element.addEventListener('submit', (e) => {
+        e.preventDefault(); 
         this.element.submit();
       }) 
   }
