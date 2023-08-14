@@ -14,7 +14,7 @@ class Modal {
   constructor(element){
       try {
         this.element = element;
-        this.element.registerEvents;
+        this.element.registerEvents();
       }
       catch (e) {
         console.log(e);
@@ -27,9 +27,8 @@ class Modal {
    * (с помощью метода Modal.onClose)
    * */
   registerEvents() {
-    if (this.element.hasAttribute('data-dismiss') === 'modal') {
-      this.element.onClose;
-    }
+    let modal = document.querySelectorAll('[data-dismiss="modal"]');
+    modal.forEach(item => item.addEventListener('click', () => this.onClose()));
   }
 
   /**
@@ -38,7 +37,7 @@ class Modal {
    * */
   onClose(e) {
     e.preventDefault();
-    this.element.close;
+    this.element.close();
   }
   /**
    * Открывает окно: устанавливает CSS-свойство display
