@@ -14,7 +14,7 @@ class Modal {
   constructor(element){
       try {
         this.element = element;
-        this.element.registerEvents();
+        this.registerEvents();
       }
       catch (e) {
         console.log(e);

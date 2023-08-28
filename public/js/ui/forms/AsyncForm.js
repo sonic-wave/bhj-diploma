@@ -33,7 +33,7 @@ class AsyncForm {
   registerEvents() {
       this.element.addEventListener('submit', (e) => {
         e.preventDefault(); 
-        this.element.submit();
+        this.submit();
       }) 
   }
 
@@ -45,13 +45,11 @@ class AsyncForm {
    * }
    * */
   getData() {
-    // this.element.append(element.name, element.value);
-    const asyncForm = new FormData(form);
-    for (let key of asyncForm) {
-      asyncForm.append(key, asyncForm[key])
+    const data = new FormData(this.element);
+    for (const [key, value] of Object.entries(data)) {
+      data.append(key, value);
     }
-    console.log( asyncForm.getData());
-    return asyncForm;
+    return data;
   }
 
   onSubmit(options){
