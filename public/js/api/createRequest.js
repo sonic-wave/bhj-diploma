@@ -33,7 +33,7 @@ const createRequest = (options = {}) => {
     if (options.method !== 'GET') {
         data = Object.entries(options.data);
         method = options.method;
-        for ([key, value] of data) {
+        for (const [key, value] of data) {
             formData.append(key, value);
         }
     }
@@ -44,11 +44,7 @@ const createRequest = (options = {}) => {
         
         xhr.onreadystatechange = function() {
             if (xhr.readyState === xhr.DONE && xhr.status === 200) {
-                // if (xhr.response.error == null) {
-                //     options.callback = (undefined, xhr.response);
-                // } else {
-                    options.callback = (xhr.response.error, xhr.response);
-                // }
+                    options.callback(null, xhr.response);
             }
         }
     }

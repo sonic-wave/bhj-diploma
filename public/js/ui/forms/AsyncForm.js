@@ -45,9 +45,10 @@ class AsyncForm {
    * }
    * */
   getData() {
-    const data = new FormData(this.element);
-    for (const [key, value] of Object.entries(data)) {
-      data.append(key, value);
+    const formData = new FormData(this.element);
+    let data = {};
+    for (const [key, value] of formData.entries()) {
+      data[key] = value;
     }
     return data;
   }
