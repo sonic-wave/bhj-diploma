@@ -12,7 +12,7 @@ class User {
    * локальном хранилище.
    * */
   static setCurrent(user) {
-    localStorage.setItem('user', user);
+    localStorage.setItem('user', JSON.stringify(user));
   }
 
   /**
@@ -28,7 +28,11 @@ class User {
    * из локального хранилища
    * */
   static current() {
-    localStorage.getItem('user');
+    if (localStorage.getItem('user')) {
+      return JSON.parse(localStorage.getItem('user'));
+    } else {
+      return undefined;
+    }
   }
 
   /**
@@ -44,7 +48,7 @@ class User {
         if (response && response.user) {
           this.setCurrent(response.user);
         }
-        if (response.success === 'false') {
+        if (response.success === false) {
           this.unsetCurrent();
         }
         callback(err, response);
@@ -103,8 +107,8 @@ class User {
       url: this.URL + '/logout',
       method: 'POST',
       responseType: 'json',
-      data,
       callback: (err, response) => {
+        console.log(response)
         if (response && response.user) {
           this.unsetCurrent();
         }

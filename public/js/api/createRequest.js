@@ -30,7 +30,7 @@ const createRequest = (options = {}) => {
         // url = urlForm;
     }
 
-    if (options.method !== 'GET') {
+    if (options.method !== 'GET' && options.data !== null && options.data !== undefined) {
         data = Object.entries(options.data);
         method = options.method;
         for (const [key, value] of data) {
@@ -39,7 +39,7 @@ const createRequest = (options = {}) => {
     }
 
     try {
-        xhr.open(method, url);
+        xhr.open(options.method, url);
         xhr.send(formData);
         
         xhr.onreadystatechange = function() {

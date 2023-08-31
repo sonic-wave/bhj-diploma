@@ -51,10 +51,12 @@ class Sidebar {
     });
 
     logoutButton.addEventListener('click', () => {
-      User.logout();
-      if (response.success === true) {
-        App.setState('init');
-      }
+      User.logout((error, response) => {
+        if (response.success === true) {
+          App.setState('init');
+        }
+      });
     });
+
   }
 }

@@ -14,7 +14,14 @@ class AccountsWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor( element ) {
-
+    try {
+      this.element = element;
+      this.registerEvents();
+      // this.update();
+    }
+    catch (e) {
+      console.log(e);
+  }
   }
 
   /**
@@ -25,7 +32,21 @@ class AccountsWidget {
    * вызывает AccountsWidget.onSelectAccount()
    * */
   registerEvents() {
+    const createButton = document.querySelector('.create-account');
+    const account = document.querySelectorAll('.account');
+    const modalAccount = App.getModal('newAccount');
+    console.log(modalAccount);
+    let modalNewAccount = new Modal(modalAccount.element);
+    console.loog(modalNewAccount);
+    createButton.addEventListener('click', () => {
+      // App.getModal('newAccount').open();
+    });
 
+    account.forEach(element => {
+      element.addEventListener('click', () => {
+        this.onSelectAccount();
+      });
+    });
   }
 
   /**
@@ -39,7 +60,14 @@ class AccountsWidget {
    * метода renderItem()
    * */
   update() {
+    // Account.list(data, (error, response) => {
+    //   if (response.success === true) {
+    //     // console.log(data);
+    //     console.log(response);
+    //   }
+    // });
 
+    // console.log(Account.list());
   }
 
   /**
