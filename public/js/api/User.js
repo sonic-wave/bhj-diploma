@@ -108,7 +108,6 @@ class User {
       method: 'POST',
       responseType: 'json',
       callback: (err, response) => {
-        console.log(response)
         if (response && response.user) {
           this.unsetCurrent();
         }

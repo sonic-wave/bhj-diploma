@@ -34,6 +34,11 @@
       "name": "Бизнес",
       "user_id": "1",
       "id": "3"
+    },
+    {
+      "name": "Иван",
+      "user_id": "1",
+      "id": "1u5pdvlmeqzuvu"
     }
   ],
   "transactions": [
@@ -171,6 +176,51 @@
       "sum": 300000,
       "type": "expense",
       "user_id": "1"
+    },
+    {
+      "id": "1u5s5olmestbe9",
+      "type": "income",
+      "name": "i",
+      "sum": 9,
+      "account_id": "1u5pdvlmeqzuvu",
+      "user_id": "1",
+      "created_at": "2023-09-11T11:26:20.912Z"
+    },
+    {
+      "id": "1u5sbmlmesxlx2",
+      "type": "income",
+      "name": "i",
+      "sum": 9,
+      "account_id": "1u5pdvlmeqzuvu",
+      "user_id": "1",
+      "created_at": "2023-09-11T11:29:41.173Z"
+    },
+    {
+      "id": "1u5scelmesxya0",
+      "type": "income",
+      "name": "2",
+      "sum": 22,
+      "account_id": "1u5pdvlmeqzuvu",
+      "user_id": "1",
+      "created_at": "2023-09-11T11:29:57.191Z"
+    },
+    {
+      "id": "1u5se8lmet0jwu",
+      "type": "expense",
+      "name": "jj",
+      "sum": 22,
+      "account_id": "1u5pdvlmeqzuvu",
+      "user_id": "1",
+      "created_at": "2023-09-11T11:31:58.541Z"
+    },
+    {
+      "id": "1u5x4olmg5fi87",
+      "type": "income",
+      "name": "k",
+      "sum": 99,
+      "account_id": "1u5pdvlmeqzuvu",
+      "user_id": "1",
+      "created_at": "2023-09-12T10:07:17.766Z"
     }
   ]
 }

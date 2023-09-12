@@ -8,7 +8,7 @@ class Entity {
    * Это могут быть счета или доходы/расходы
    * (в зависимости от того, что наследуется от Entity)
    * */
-  static list(data, callback){
+  static list(data, callback = f => f){
     return createRequest({
       data,
       url: this.URL,
@@ -37,7 +37,7 @@ class Entity {
    * Удаляет информацию о счёте или доходе/расходе
    * (в зависимости от того, что наследуется от Entity)
    * */
-  static remove(data, callback ) {
+  static remove(data, callback = f => f) {
     return createRequest({
       data,
       url: this.URL,
@@ -47,3 +47,4 @@ class Entity {
     });
   }
 }
+

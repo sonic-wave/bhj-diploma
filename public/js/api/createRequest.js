@@ -54,23 +54,3 @@ const createRequest = (options = {}) => {
 
 }
 
-// createRequest(options = {
-//     url: 'http://localhost:8000/user/login', // адрес
-//     data: { // произвольные данные, могут отсутствовать
-//       email: 'demo@demo',
-//       password: 'demo'
-//     },
-//     method: 'POST', // метод запроса
-//     /*
-//       Функция, которая сработает после запроса.
-//       Если в процессе запроса произойдёт ошибка, её объект
-//       должен быть в параметре err.
-//       Если в запросе есть данные, они должны быть переданы в response.
-//     */
-//     callback: (err, response) => {
-        
-//             console.log( 'Ошибка, если есть', err );
-        
-//         console.log( 'Данные, если нет ошибки', response );
-//     }
-//   });
