@@ -17,6 +17,12 @@
       "email": "ivan@mail.ru",
       "password": "demo",
       "id": "1u55aollz462b5"
+    },
+    {
+      "name": "Alexander",
+      "email": "alexander@gmail.com",
+      "password": "Alexander",
+      "id": "1u5187elmz99w6d"
     }
   ],
   "accounts": [
@@ -214,13 +220,13 @@
       "created_at": "2023-09-11T11:31:58.541Z"
     },
     {
-      "id": "1u5x4olmg5fi87",
+      "id": "1u51889lmz9abf1",
       "type": "income",
-      "name": "k",
-      "sum": 99,
-      "account_id": "1u5pdvlmeqzuvu",
-      "user_id": "1",
-      "created_at": "2023-09-12T10:07:17.766Z"
+      "name": "Alexander",
+      "sum": 123,
+      "account_id": "1",
+      "user_id": "1u5187elmz99w6d",
+      "created_at": "2023-09-25T19:02:51.468Z"
     }
   ]
 }

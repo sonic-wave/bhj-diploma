@@ -1,7 +1,7 @@
-/**
- * Класс AccountsWidget управляет блоком
- * отображения счетов в боковой колонке
- * */
+// /**
+//  * Класс AccountsWidget управляет блоком
+//  * отображения счетов в боковой колонке
+//  * */
 
 class AccountsWidget {
   /**
@@ -33,11 +33,13 @@ class AccountsWidget {
    * */
   registerEvents() {
     const createButton = document.querySelector('.create-account');
-    createButton.addEventListener('click', () => {
+    createButton.addEventListener('click', (e) => {
+      e.preventDefault();
       App.getModal('createAccount').open();
     });
     
     this.element.addEventListener('click', (e) => {
+      e.preventDefault();
       let item = e.target;
       if (item.closest('.account')) {
         this.onSelectAccount(item.closest('.account'));
@@ -83,19 +85,13 @@ class AccountsWidget {
    * Вызывает App.showPage( 'transactions', { account_id: id_счёта });
    * */
   onSelectAccount( element ) {
-    if (this.currentId) {
-      let account = this.element.querySelector(`.account[data-id="${this.currentId}"]`);
-      if (account) {
-        account.classList.remove('active');
-      }
-      else {
-        this.currentAccountId = null;
-      }
+    if (element.closest('ul').querySelector('.active')) {
+      element.closest('ul').querySelector('.active').classList.remove('active');
     }
-    element.classList.add('active');
-    this.currentId = element.dataset.id;
 
-    App.showPage( 'transactions', { account_id: this.currentAccountId});
+    element.classList.add('active');
+    App.showPage( 'transactions', { account_id: element.dataset.id })
+  
   }
 
   /**
@@ -123,3 +119,4 @@ class AccountsWidget {
     this.element.insertAdjacentHTML('beforeEnd', accountHTML);
   }
 }
+

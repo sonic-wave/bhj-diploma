@@ -9,15 +9,12 @@ class Account extends Entity {
    * */
   static URL = '/account';
 
-  static get(id, callback = f => f ){
-    return createRequest({
-      data,
+  static get(id = '', callback){
+    createRequest({
       url: this.URL + '/' + id,
       method: 'GET',
-      responseType: 'json',
-      callback
+      id,
+      callback,
     });
   }
-
-
 }
